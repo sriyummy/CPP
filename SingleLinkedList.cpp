@@ -6,48 +6,72 @@ struct node
     int data;
     struct node* next;
 };
+node* head;
 
-int main()
+void inputLL()
 {
-    node* head, *new_node, *temp;
-    int ch = 1;
+    node* ptr, *current;
+    char ch;
+    ptr = nullptr;
+    current = nullptr;
+
+    std::cout << "Creating a linked list now: " << std::endl;
     head = nullptr;
 
-    while (ch == 1)
+    do
     {
-        new_node = (node*)malloc(sizeof(node));
+        ptr = (struct node*)malloc(sizeof(struct node)); 
+
+        if (ptr == nullptr)
+        {
+            std::cout << "Memory Allocation Failed :(" << std::endl;
+            return;
+        }
 
         std::cout << "Enter data: ";
-        std::cin >> new_node->data;
+        std::cin >> ptr->data;
 
-        if (head == nullptr)
+        ptr->next = nullptr;
+
+        if (head == NULL)
         {
-            head = temp = new_node;
+            head = ptr;
+            current = ptr;
         }
         else
         {
-            temp->next = new_node;
-            temp = new_node;
+            current->next = ptr;
+            current = ptr;
         }
 
-        std::cout << "Do you want to continue making the Linked List?\n(0 to exit, 1 to continue)";
+        std::cout << "Do you want to add more nodes? (Y/N): ";
         std::cin >> ch;
-    }
+    } while (ch == 'Y' || ch == 'y');
+}
 
-    temp = head;
-    while (temp != nullptr)
-    {
-        std::cout << temp->data << " ";
-        temp = temp->next;
-    }
+void displayLL()
+{
+    struct node* p = head;
 
-    temp = head;
-    while (temp != nullptr)
+    if (head == nullptr)
     {
-        node* next = temp->next;
-        free(temp);
-        temp = next;
+        std::cout << "List is empty!";
+        return;
     }
+    else
+    {
+        while (p!=nullptr)
+        {
+            std::cout << p->data << " ";
+            p = p->next;
+        }
+    }
+}
+
+int main()
+{
+    inputLL();
+    displayLL();
 
     return 0;
 }
