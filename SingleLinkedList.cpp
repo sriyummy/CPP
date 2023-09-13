@@ -68,10 +68,26 @@ void displayLL()
     }
 }
 
+void freeLL()
+{
+    struct node* current = head;
+    struct node* next;
+
+    while (current != nullptr)
+    {
+        next = current->next;
+        free(current);
+        current = next;
+    }
+
+    head = nullptr;
+}
+
 int main()
 {
     inputLL();
     displayLL();
+    freeLL();
 
     return 0;
 }
