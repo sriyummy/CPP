@@ -6,23 +6,24 @@ struct node
     int data;
     node* next;
 };
+
 node* head = nullptr;
 
-int createLinkedList(node* start)
+int createLinkedList()
 {
     node* ptr, * current;
     ptr = nullptr;
     current = nullptr;
     char ch;
-    int c=1;
+    int c = 1;
 
-    std::cout << "Creating a Linked List now:" << std::endl;
+    std::cout << "Creating a Circular Linked List now:" << std::endl;
 
     do
     {
-        ptr = (node* )malloc(sizeof(node));
+        ptr = (node*)malloc(sizeof(node));
 
-        if(ptr == nullptr)
+        if (ptr == nullptr)
         {
             std::cout << "Memory Allocation Failed!";
             return 0;
@@ -53,16 +54,16 @@ int createLinkedList(node* start)
     {
         current->next = head;
     }
-    
+
     return c;
 }
 
-void displayLinkedList(node* start)
+void displayLinkedList()
 {
-    node* ptr = start;
-    if (start == nullptr)
+    node* ptr = head;
+    if (head == nullptr)
     {
-        std::cout << "The Linked List is empty!";
+        std::cout << "The Circular Linked List is empty!";
         return;
     }
     else
@@ -71,15 +72,14 @@ void displayLinkedList(node* start)
         {
             std::cout << ptr->data << " ";
             ptr = ptr->next;
-        }
-        while (ptr->next != start);
+        } while (ptr != head);
     }
 }
 
 void freeLL()
 {
-    struct node* current = head;
-    struct node* next;
+    node* current = head;
+    node* next;
 
     while (current != nullptr)
     {
@@ -95,8 +95,8 @@ int main()
 {
     int count;
 
-    count = createLinkedList(head);
-    displayLinkedList(head);
+    count = createLinkedList();
+    displayLinkedList();
     freeLL();
 
     return 0;
