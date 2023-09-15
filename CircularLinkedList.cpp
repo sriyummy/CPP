@@ -57,11 +57,9 @@ int createLinkedList(node* start)
     return c;
 }
 
-void displayLinkedList(node* start, int number)
+void displayLinkedList(node* start)
 {
     node* ptr = start;
-    int i=1;
-
     if (start == nullptr)
     {
         std::cout << "The Linked List is empty!";
@@ -69,12 +67,12 @@ void displayLinkedList(node* start, int number)
     }
     else
     {
-        while (i < number)
+        do
         {
             std::cout << ptr->data << " ";
             ptr = ptr->next;
-            i++;
         }
+        while (ptr->next != start);
     }
 }
 
@@ -98,7 +96,7 @@ int main()
     int count;
 
     count = createLinkedList(head);
-    displayLinkedList(head, count);
+    displayLinkedList(head);
     freeLL();
 
     return 0;
