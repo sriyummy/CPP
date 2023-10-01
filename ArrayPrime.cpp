@@ -1,5 +1,3 @@
-// Dynamically Allocate an array an print the sum of the prime elements in that array
-
 #include <iostream>
 #include <cstdlib>
 
