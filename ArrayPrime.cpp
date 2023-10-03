@@ -57,6 +57,5 @@ int main()
 
     std::cout << "The sum of the prime elements in the array is equal to: " << std::endl;
     std::cout << sumPrime (arr, n);
-
     return 0;
 }
