@@ -1,5 +1,3 @@
-//Using Recursion to print the multiplication table of 15
-
 #include <iostream>
 
 void table (int x, int y)
